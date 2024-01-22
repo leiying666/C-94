@@ -1,0 +1,30 @@
+我的方案1：
+#include<stdio.h>
+void Cr(int a[],int sz)
+{
+    int i;
+    for (i = 1; i < sz; i++)
+    {
+        int j = i - 1;
+        while (a[j] > a[j + 1] && j >= 0)
+        {
+            int tmp = a[j + 1];
+            a[j+1] = a[j];
+            a[j] = tmp;
+            j--;
+        }
+    }
+    
+}
+int main()
+{
+    int a[] = { 9,8,7,6,5,4,3,2,1,0 };
+    Cr(a,10);
+    int i;
+    for (i = 0; i < 10; i++)
+    {
+        printf("%d ", a[i]);
+    }
+    return 0;
+}
+很有意思，也是利用了有序和无须的思想，先假设第一个元素有序，后面的元素依次变为有序，本质
