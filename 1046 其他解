@@ -1,0 +1,20 @@
+#include<stdio.h>
+#define M(x,y) (((x)>(y))?(x):(y))
+#define MAX(a,b,c) (M((a),(M((b),(c)))))
+int max(int a,int b,int c)
+{ 
+    int t; 
+    t=a>b?a:b; 
+    t=t>c?t:c; 
+    return t;
+}
+main()
+{ 
+    float a,b,c; 
+    float m; 
+    scanf("%f %f %f",&a,&b,&c); 
+    m=MAX(a,b,c); 
+    printf("%.3f\n",m); 
+    m=max(a,b,c); 
+    printf("%.3f\n",m);
+}
