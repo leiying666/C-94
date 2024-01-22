@@ -1,0 +1,14 @@
+#include<stdio.h>
+#define MAX(X,Y) (X>Y?X:Y)
+double Max(double x, double y)
+{
+	return x > y ? x : y;
+}
+int main()
+{
+	double a, b, c;
+	scanf("%lf%lf%lf", &a, &b, &c);
+	printf("%.3lf\n", Max(Max(a, b), c));
+	printf("%.3lf\n", MAX(MAX(a, b), c));
+	return 0;
+}
