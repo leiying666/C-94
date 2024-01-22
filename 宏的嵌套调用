@@ -1,0 +1,25 @@
+宏可以嵌套调用，但是不能用宏来实现递归
+例如
+#include<stdio.h>
+#define MAX(a,b,c) (M((a),(M((b),(c)))))
+#define M(x,y) (((x)>(y))?(x):(y))
+float Max(float a, float b, float c)
+{
+    float t;
+    t = a > b ? a : b;
+    t = t > c ? t : c;
+    return t;
+}
+main()
+{
+    float a, b, c;
+    float m;
+    scanf("%f %f %f", &a, &b, &c);
+    m = MAX(a, b, c);
+    printf("%.3f\n", m);
+    m = Max(a, b, c);
+    printf("%.3f\n", m);
+}
+
+把上面代码中的宏互换位置，发现结果不变，可以得出，定义宏不用在意先后顺序，预处理不会直接在宏的定义处替换其中嵌套的宏，由此可推出预处理会对一句代码进行多次的宏的检测和替换，直到语句内不含宏为止。
+由此可以得出宏的递归是无限的替换，猜测系统预处理时应该会限制宏里面套用相同的宏来防止无限
